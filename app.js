@@ -2,10 +2,15 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
-app.listen(3000, () => console.log("Servidor funcionando en puerto 3000"));
+const PORT = 3000;
 
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.listen(PORT, () =>
+      console.log(`Servidor funcionando en puerto ${PORT}
+http://localhost:${PORT}`)
+);
+
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "./views/home.html"));
+      res.sendFile(path.join(__dirname, "./views/home.html"));
 });
